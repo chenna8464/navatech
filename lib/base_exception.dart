@@ -13,7 +13,7 @@ class BaseException {
         ApiFailureModel(
           status: e.error.toString(),
           message: e.message.toString(),
-          code: e.response!.statusCode!,
+          code: e.response?.statusCode ?? 500,
         ),
       );
     } catch (e) {

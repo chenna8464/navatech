@@ -16,8 +16,8 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> {
     on<LoadAlbums>((event, emit) async {
       emit(AlbumLoading());
       try {
-        final albums = await repository.fetchAlbums();
-        albums.fold(
+        final response = await repository.fetchAlbums();
+        response.fold(
           (e) {
             emit(AlbumError(e.message));
           },
@@ -48,8 +48,8 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> {
   Future<void> fetchPhotos(List<Album> albums) async {
     final photosMap = <int, List<Photo>>{};
     for (Album album in albums) {
-      final photos = await repository.fetchPhots(album.id);
-      photos.fold(
+      final response = await repository.fetchPhots(album.id);
+      response.fold(
         (e) {
           emit(AlbumError(e.message));
         },
