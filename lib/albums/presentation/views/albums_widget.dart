@@ -67,10 +67,11 @@ class _AlbumWidgetState extends State<AlbumWidget> {
                     width: 120,
                     height: 120,
                     progressIndicatorBuilder:
-                        (context, url, downloadProgress) =>
-                            CircularProgressIndicator(
-                              value: downloadProgress.progress,
-                            ),
+                        (context, url, downloadProgress) => ColoredBox(
+                          color: Colors.grey[200]!,
+                          child: SizedBox(height: 120, width: 120),
+                        ),
+
                     errorWidget: (context, url, error) => Image.network(
                       'https://dummyimage.com/120x120/cccccc/ffffff&text=$index',
                       width: 120,

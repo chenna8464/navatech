@@ -17,9 +17,7 @@ class AlbumsDataSourceImpl implements AlbumsDataSource {
     final response = await _dio.get('/albums');
     final albums = (response.data as List)
         .map((e) => Album.fromJson(e))
-        .toList()
-        .take(10)
-        .toList(); // Limit to 100 albums
+        .toList();
     await box.addAll(albums);
     return albums;
   }
@@ -36,9 +34,7 @@ class AlbumsDataSourceImpl implements AlbumsDataSource {
     );
     final photos = (response.data as List)
         .map((e) => Photo.fromJson(e))
-        .toList()
-        .take(10)
-        .toList(); // Limit to 100 photos
+        .toList();
     await box.addAll(photos);
     return photos;
   }
